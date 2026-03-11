@@ -85,6 +85,11 @@ contract ExponentialNoError {
         return uint32(n);
     }
 
+    function safe64(uint n, string memory errorMessage) pure internal returns (uint64) {
+        require(n < 2**64, errorMessage);
+        return uint64(n);
+    }
+
     function add_(Exp memory a, Exp memory b) pure internal returns (Exp memory) {
         return Exp({mantissa: add_(a.mantissa, b.mantissa)});
     }
